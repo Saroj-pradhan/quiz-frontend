@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import Routing from "../utils/Routing";
 import {Datacont} from '../context/Context'
 
-function Home() {
+function Quiz() {
     const [currentquestion,setcurrentquestion] = useState(0);
     const [optionclk, setoptionclk] = useState(false);
     const [answer, setanswer] = useState("");
@@ -64,7 +64,7 @@ setcurrentquestion(currentquestion-1);
  </button>
      ))
     }
-     <p>{user[currentquestion].answer}</p>
+     {/* <p>{user[currentquestion].answer}</p> */}
    </div>
  </div>
  
@@ -85,4 +85,4 @@ setcurrentquestion(currentquestion-1);
   );
 }
 
-export default Home;
+export default Quiz;

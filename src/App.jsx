@@ -10,7 +10,7 @@ function App() {
   return (
     <>
    <div className=' h-screen w-screen justify-between'>
-          <div className='bg-gray-100 w-full h-[3.8rem] p-1.5'>
+          <div className='bg-amber-300 w-full h-[4rem] p-1.5'>
           <Nav/>
           </div>
         

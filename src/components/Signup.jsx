@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 import axios from '../utils/Axios'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { ToastContainer,toast } from 'react-toastify';
 function Signup(){
+
 const [naam,setnaam] = useState(" ");
 const [uid,setuid] = useState(" ");
 const [pass,setpass] = useState(" ");
@@ -29,7 +30,7 @@ const [pass,setpass] = useState(" ");
               } 
          })
         }
-        
+     
 
     return(
         <div className=' flex flex-col justify-center items-center '>
