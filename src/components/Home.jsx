@@ -22,7 +22,7 @@ return (
         </div>
       </div>
   <div className='  sm:min-w-[44%] p-3'>
-    <img className='h-[30rem] w-full' src="\public\online-poll-concept-woman-with-questionnaire-internet-young-girl-choose-options-feedback_1002658-2663.jpg" alt="" srcset="" />
+    <img className='h-[30rem] w-full' src=".\online-poll-concept-woman-with-questionnaire-internet-young-girl-choose-options-feedback_1002658-2663.jpg" alt="" srcset="" />
   </div>
 </div>
 )

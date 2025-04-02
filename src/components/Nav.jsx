@@ -16,7 +16,7 @@ function Nav() {
   return (
     <nav className="flex pl-4 pr-4  items-center justify-between  ">
       <div className="sm:ml-4  flex items-center">
-       <img className="w-14" src="\public\head.png" alt="" srcset="" />
+       <img className="w-14" src=".\head.png" alt="" srcset="" />
        <p className="text-green-900 font-extrabold text-2xl sm:text-3xl ">MCA-PREP</p>
       </div>
       <div className="flex">
