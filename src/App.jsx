@@ -5,16 +5,17 @@ import viteLogo from '/vite.svg'
 import Routing from './utils/Routing'
 import Nav from './components/Nav'
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-   <div className=' h-screen w-screen justify-between'>
-          <div className='bg-amber-300 w-full h-[4rem] p-1.5'>
+   <div className=' h-full w-full flex flex-col justify-center items-center'>
+    
+          <div className='bg-gray-200 w-full md:h-[10%] h-[4rem] p-1.5'>
           <Nav/>
           </div>
         
-          <div>
+          <div className='md:w-[100%] '>
              <Routing/>
           </div>
       </div>

@@ -1,27 +1,16 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Datacont } from "../context/Context";
-import {Admincont} from "../context/Admincontext";
+import { Admincont } from "../../context/Admincontext";
 
 function Nav() {
   const navigate = useNavigate();
-  const {isadlogin,setadlogin} = useContext(Admincont);
-  const { isloggedin, setlogin } = useContext(Datacont);
- 
+  const { isadlogin, setadlogin } = useContext(Admincont);
+  
 
   function loggedout() {
-    setlogin(false);
-  setadlogin(false);
- 
+    setadlogin(false);
+
     sessionStorage.removeItem("usertoken");
-    sessionStorage.removeItem("admintoken");
-    // navigate("/login");
-  }
-  function Adminloggedout() {
-    
-  setadlogin(false);
-    sessionStorage.removeItem("admintoken");
-    
     navigate("/admin/login");
   }
   return (
@@ -38,7 +27,7 @@ function Nav() {
         >
           Home
         </Link>
-        {isloggedin || isadlogin ? (
+        {isloggedin ? (
           <button
             className="rounded py-2 px-4 border-black text-white bg-red-600 border-2  hover:bg-red-700"
             onClick={loggedout}

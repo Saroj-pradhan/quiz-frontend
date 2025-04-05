@@ -10,7 +10,7 @@ function Home(){
   const [time , settime ] = useState( new Date());
  
 return (
-<div className=' bg-white ml-3 mr-3 w-full  flex flex-wrap'>
+<div className=' bg-white   w-full  flex flex-wrap justify-center'>
     <div className='min-w-[48%] p-8 md:mt-11 flex flex-col justify-start'>
            <div className=' mb-2  '>
               <h1  className='text-6xl font-extrabold '>YOUR <span className='text-green-600'>OJEE</span> <br></br><span className='text-green-600'>MCA</span> Prep Partner </h1>
