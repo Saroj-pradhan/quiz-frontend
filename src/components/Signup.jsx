@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
 import axios from '../utils/Axios'
 import {Link, useNavigate} from 'react-router-dom'
-import { ToastContainer,toast } from 'react-toastify';
+import { toast,ToastContainer } from 'react-toastify';
 function Signup(){
-
+const nevigate = useNavigate();
 const [naam,setnaam] = useState(" ");
 const [uid,setuid] = useState(" ");
 const [pass,setpass] = useState(" ");
@@ -17,9 +17,12 @@ const [pass,setpass] = useState(" ");
             setpass(password.current.value);
          axios.post('/user/signup',{ "name":name.current.value,"id":id.current.value,"password":password.current.value})
          .then((res)=>{ 
-            toast.success(res.data);
-            console.log(res.data);
-            
+           
+            toast.success(res.data.message || "You are signed up successfully!");
+            console.log(res.data.message  );
+            setTimeout(() => {
+              nevigate('/login');
+            }, 2300);
          }).catch((error)=>{
             if (error.response) {
                 // Backend responded with an error

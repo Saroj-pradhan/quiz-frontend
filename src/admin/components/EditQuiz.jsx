@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Addquiz from './Addquiz';
 
 function EditQuiz() {
@@ -6,15 +6,16 @@ function EditQuiz() {
   function addquiz(){
     seteditmode(true);
   }
+ 
   return (
   
-    <div className=' w-full h-full'>
-        <div>
-          <h1>you can add quiz </h1>
-          <button onClick={addquiz} className='px-4 py-2 bg-blue-600'>add quiz</button>
+    <div className=' w-full h-full flex justify-center align-middle flex-col bg-blue-900 '>
+        <div className='text-black m-2mt-2'>
+         
+          <button onClick={addquiz} className='ml-3 px-4 py-2 bg-lime-500'>add quiz</button>
         </div>
-        <div className=''>
-          {editmode? <Addquiz/>:<p>here added</p>}
+        <div className='bg-blue-900'>
+          {editmode? <Addquiz/>:<p></p>}
         </div>
     </div>
   )
