@@ -11,7 +11,7 @@ function Addquiz() {
     const sentquiz =(e)=>{
       e.preventDefault();
       console.log(e);
-  console.log(question.current.value);
+  // console.log(question.current.value);
   const admintoken = sessionStorage.getItem('admintoken');
   console.log(admintoken);
   
@@ -25,20 +25,23 @@ function Addquiz() {
 //     option:["fg","fq","dfg","jjj"],
 //     answer:"fq"
 //   })
-  axios.post('/admin/getquiz',
-    {
-    headers: {  token: `Bearer ${admintoken}` }
-        
-  },
+  axios.post('/admin/insert',
+   
+
   {
         question:"who are you",
-        option:["fg","fq","dfg","jjj"],
+        option:["ffgg","fq","dfgg","jrgjj"],
         answer:"fq"
+      },
+      {
+        headers: {  token: `Bearer ${admintoken}` }
+            
       }
     
 ).then((res)=>{ console.log(res.data);
-    console.log("all");
+    console.log("all ok");
     
+  }).catch((error)=>{console.log(error);
   })
       
     }

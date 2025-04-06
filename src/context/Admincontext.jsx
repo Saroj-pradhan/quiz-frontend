@@ -4,7 +4,7 @@ export const  Admincont = createContext();
 const Admincontext =({children})=>{
     const [isadlogin,setadlogin] = useState(false);
     useEffect(()=>{
-           const admintoken=  sessionStorage.getItem("admintoken");
+           const admintoken =   sessionStorage.getItem("admintoken");
    admintoken?setadlogin(true):setadlogin(false);
     },[])
 return(
