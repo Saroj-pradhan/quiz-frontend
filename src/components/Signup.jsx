@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react'
 import axios from '../utils/Axios'
 import {Link, useNavigate} from 'react-router-dom'
 import { toast,ToastContainer } from 'react-toastify';
+import Loader from './Loader';
 function Signup(){
+  const [loading,setloading] = useState(false);
 const nevigate = useNavigate();
 const [naam,setnaam] = useState(" ");
 const [uid,setuid] = useState(" ");
@@ -12,18 +14,20 @@ const [pass,setpass] = useState(" ");
         const password = useRef(null);
         function getfdata(e){
             e.preventDefault();
+            setloading(true);
             setnaam(name.current.value);
             setuid(id.current.value);
             setpass(password.current.value);
          axios.post('/user/signup',{ "name":name.current.value,"id":id.current.value,"password":password.current.value})
          .then((res)=>{ 
-           
+           setloading(false);
             toast.success(res.data.message || "You are signed up successfully!");
             console.log(res.data.message  );
             setTimeout(() => {
               nevigate('/login');
             }, 2300);
          }).catch((error)=>{
+          setloading(false);
             if (error.response) {
                 // Backend responded with an error
                 toast.error(error.response.data || "An error occurred!");
@@ -33,7 +37,7 @@ const [pass,setpass] = useState(" ");
               } 
          })
         }
-     
+     if(loading){return <Loader/>}
 
     return(
         <div className=' flex flex-col justify-center items-center '>
@@ -50,7 +54,7 @@ const [pass,setpass] = useState(" ");
         <label htmlFor=""  className='mt-1.5'>Password</label>
         <input ref={password} required className='h-9  p-1.5 border-blue-700 ' type="password" name="" id="" placeholder='Enter your Password'/>
        
-        <button className='text-white    mt-5 px-4 py-2 bg-blue-600 rounded p-1 m-3' type="submit"> sign in </button>
+        <button className='text-white    mt-5 px-4 py-2 bg-blue-600 rounded p-1 m-3' type="submit"> sign up </button>
             </form>
   </div>
     </div>
