@@ -12,7 +12,7 @@ function Landingpage() {
     <div className='w-full'>
       
          
-       {isloggedin?<p>hii you are loggedin</p>: <Home/>}
+       {isloggedin?<Quiz/>: <Home/>}
     </div>
   )
 }

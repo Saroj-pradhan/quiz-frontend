@@ -2,8 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Routing from "../utils/Routing";
 import {Datacont} from '../context/Context'
+import Loader from "./Loader";
 
 function Quiz() {
+  const [loading, setLoading] = useState(true);
+
+
+
+  
     const [currentquestion,setcurrentquestion] = useState(0);
     const [optionclk, setoptionclk] = useState(false);
     const [answer, setanswer] = useState("");
@@ -31,7 +37,12 @@ setcurrentquestion(currentquestion+1);
 setcurrentquestion(currentquestion-1);
     }
   }
- 
+  useEffect(() => {
+    if (user && user.length > 0) {
+      setLoading(false);
+    }
+  }, [user]);
+  if (loading) return <Loader />;
 //  useEffect(()=>{
 
 

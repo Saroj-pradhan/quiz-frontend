@@ -4,9 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../utils/Axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Datacont } from "../context/Context";
+import Loader from "./Loader";
 
 function Login() {
-
+const [loading,setloading] = useState(false);
   const nevigate = useNavigate();
   const { isloggedin,utoken, setutoken, setlogin } = useContext(Datacont);
   const [uid, setuid] = useState(" ");
@@ -16,6 +17,7 @@ function Login() {
 
   function getfdata(e) {
     e.preventDefault();
+    setloading(true);
     setuid(id.current.value);
     setpass(password.current.value);
 
@@ -34,18 +36,22 @@ function Login() {
         sessionStorage.setItem("usertoken", token);
         nevigate("/quiz");
         console.log("Stored Token:", sessionStorage.getItem("usertoken"));
+        setloading(false);
       })
       .catch((error) => {
         console.log(error);
 
         toast.error(error.response.data);
+        setloading(false);
       });
   }
  useEffect(()=>{
   if(isloggedin){
     nevigate("/quiz");
   }
+  
  })
+ if(loading){return <Loader/>}
   return (
     <div className="  flex flex-col justify-center items-center">
       <ToastContainer />

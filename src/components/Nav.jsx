@@ -31,7 +31,7 @@ function Nav() {
        <p className="text-green-900 font-extrabold text-2xl sm:text-3xl ">MCA-PREP</p>
       </div>
       <div className="flex">
-      <Link className={`${(isadlogin)? ('hidden'):("block" ) }`} to="/admin/login  ">Admin login</Link>
+      <Link className={`${(isadlogin || isloggedin) ? ('hidden'):("block" ) } m-1 rounded py-2 px-4 border-black text-white text-center bg-blue-600`} to="/admin/login">Admin</Link>
         <Link
           className="rounded py-2 px-4 border-black text-white bg-blue-600 border-2  hover:bg-blue-700 hidden mr-2 sm:block"
           to="/"

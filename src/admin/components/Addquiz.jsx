@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef ,useState } from 'react'
 import axios from '../../utils/Axios';
 import { toast,ToastContainer } from 'react-toastify';
+import Loader from '../../components/Loader' 
 function Addquiz() {
+  const [loading,setloading] = useState(false);
     const Aquestion =  useRef(null);
     const Aoption1 =  useRef(null);
     const Aoption2 =  useRef(null);
@@ -11,6 +13,7 @@ function Addquiz() {
     
     const sentquiz =(e)=>{
       e.preventDefault();
+      setloading(true);
       console.log(e);
       console.log(Aoption1.current.value);
       const checkoptions= [`${Aoption1.current.value.trim()}`,`${Aoption2.current.value.trim()}`,`${Aoption3.current.value.trim()}`,`${Aoption4.current.value.trim()}`]
@@ -44,10 +47,11 @@ function Addquiz() {
     Aoption4.current.value = "";
     Aanswer.current.value = "";
  
-    
+    setloading(false);
   }).catch((error)=>{console.log(error);
+     setloading(false);
   })
-      
+  if(loading){return <Loader/>}
     }
   return (
     <div className='flex justify-center'>

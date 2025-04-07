@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from './Loader';
 function Home(){
   const nevigate = useNavigate();
   function snup(){
@@ -7,8 +8,16 @@ function Home(){
     
     nevigate('/signup');
   }
-  const [time , settime ] = useState( new Date());
- 
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+  const loadtime=  setTimeout(()=>{
+      setLoading(false);
+    },500)
+   return ()=> {clearTimeout(loadtime);
+  
+   }
+  },[])
+  if(loading){return <Loader/>}
 return (
 <div className=' bg-white   w-full  flex flex-wrap justify-center'>
     <div className='min-w-[48%] p-8 md:mt-11 flex flex-col justify-start'>

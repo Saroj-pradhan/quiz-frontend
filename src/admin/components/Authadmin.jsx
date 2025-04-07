@@ -3,8 +3,10 @@ import axios from '../../utils/Axios'
 import { Admincont } from '../../context/Admincontext';
 import EditQuiz from './EditQuiz';
 import { useNavigate } from 'react-router-dom';
-
+import Loader from '../../components/Loader';
+import { toast,ToastContainer } from 'react-toastify';
 function Authadmin() {
+   const [loading,setloading] = useState(false);
     const nevigate = useNavigate();
  const {isadlogin,setadlogin} = useContext(Admincont);
 //  console.log(isadlogin);
@@ -13,6 +15,7 @@ function Authadmin() {
     const naam = useRef(null);
     const pass = useRef(null);
 function getdata(ev){
+  setloading(true);
 ev.preventDefault();
 console.log(naam.current.value);
 console.log(pass.current.value);
@@ -22,6 +25,9 @@ axios.post('/admin/login',{
 
 }).then((res)=>{ 
     // sessionStorage.setItem("admintoken",)
+
+    setloading(false);
+    toast.success(res.data.message);
     console.log(res);
     console.log(res.data.message);
     const token = res.data.token.split(' ')[1];
@@ -30,7 +36,11 @@ axios.post('/admin/login',{
     
   setadlogin(true);
 //   nevigate('/admin/quiz');
+
     console.log(isadlogin);
+}).catch((error)=>{
+  setloading(false);
+  toast.error(error.response.data || "error at login try after some time")
 })
 }
 useEffect(()=>{
@@ -38,8 +48,10 @@ useEffect(()=>{
 
    isadlogin?nevigate('/admin/quiz'):nevigate('/admin/login');
 },[isadlogin])
+if(loading){return <Loader/>}
   return (
     <div className='w-full flex justify-center ms:m-4 m'>
+      <ToastContainer/>
      <div className='h-fit w-80 bg-white border-2 border-b-blue-800 '>
      <p className="text-3xl m-3 font-bold text-center text-blue-600">Welcome back!</p>
 <form action="" onSubmit={getdata} className='flex flex-col m-4  text-start text-2xl mt-6'>
